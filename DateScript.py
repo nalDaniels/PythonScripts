@@ -43,6 +43,7 @@ order = takeorder()
 # #Run function 
 
 #Create a function that shows the remaining budget after ordering food and drinks and returns the bill plus tip
+#It refers back to the menu dictionary to get the prices for the items ordered, then sums up the cost of all items ordered
 def remaining(orderlist, budget):
     bill = 0
     for item in orderlist:
