@@ -1,3 +1,5 @@
+#TRY RUNNING ALL FUNCTIONS IN A BACHELORETTE FUNCTION
+
 # Purpose:
 # Create a date.py script that is a date simulator and does the following:
 
