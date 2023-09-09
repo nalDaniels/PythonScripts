@@ -25,7 +25,7 @@ print(menu)
 
 #Create a function to take the order and create a list
 def takeorder():
-    order = input("What would you like to order? ")
+    order = input("What would you like to order? (Separate items with ', ') ")
     orderlist = order.split(", ")
     print("Your order of " + ", ".join(orderlist) + " will be out shortly")
     return orderlist
