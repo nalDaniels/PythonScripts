@@ -33,15 +33,6 @@ def takeorder():
 #Saves a list of the order inside a variable order, so we can use it in the remaining budget function 
 order = takeorder()
 
-# #Create a function for items that date goers didn't like
-# def no_likey(order):
-#   nasty = input("You did't eat your food. What didn't you like?")
-#   nastylist = nasty.split(", ")
-#   for item in nastylist:
-#       order.remove(item)
-
-# #Run function 
-
 #Create a function that shows the remaining budget after ordering food and drinks and returns the bill plus tip
 #It refers back to the menu dictionary to get the prices for the items ordered, then sums up the cost of all items ordered
 def remaining(orderlist, budget):
