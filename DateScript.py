@@ -15,7 +15,7 @@ def takeorder():
     orderlist = order.split(", ")
     for item in orderlist:
         if item.title() == "Bottle Of Wine":
-            #create a global variable so it can be used in another function
+            #create a global variable so it can be used/referenced in another function
             global wine
             wine = input("White or Red? ")
     print("Your order of " + ", ".join(orderlist) + " will be out shortly")
