@@ -37,10 +37,11 @@ def remaining(orderlist, budget, menu):
 
 
 #Create a function that asks Jamie's date if he wants to pay the bill, so it can be used in next function
-def pay_bill(bill):
+def pay_bill(bill, budget):
     answer = input(f"Would you like to pay your bill of {bill}? ").lower()
     if answer.lower() == "yes":
         print("Thank you for paying your bill")
+        print("You have " + str(budget - bill) + " left in your budget.")
     elif answer.lower() == "no":
         print("Roll up your sleeves and join us in the back to wash some dishes")
 
@@ -70,18 +71,14 @@ def Bachelorette():
     "Bottle Of Wine": {"Red": 60, "White": 50}}
     print(menu)
 
-    #Call the take order function and save the output of the order list to variable called order
     order = takeorder()
 
-    #Call the remaining function with order, budget and menu arguements and save the output of the bill to a variable called bill
+
     bill = remaining(order, budget, menu)
 
-    #Run the paybill function with the bill variable as the argument
-    pay_bill(bill)
-
-    #Run the seconddate function with the date variable as an argument
+    pay_bill(bill, budget)
+    
     second_date(date)
 
 #Run the date simulator function
 Bachelorette()
-
