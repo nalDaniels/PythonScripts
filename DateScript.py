@@ -77,10 +77,8 @@ def Bachelorette():
     order = takeorder(menu)
 
 
-    try:
-        bill = remaining(order, budget, menu)
-    except KeyError:
-        takeorder(menu)
+    bill = remaining(order, budget, menu)
+
 
     pay_bill(bill, budget)
     
