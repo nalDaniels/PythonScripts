@@ -18,9 +18,9 @@ def takeorder(menu):
             #create a global variable to be used in another function
             global wine
             wine = input("White or Red? ")
-        if item not in menu.keys():
-            print("Sorry, we don't sell that here. Here's what we have: "
-        else: 
+        if item.title() not in menu.keys():
+            print(f"Sorry, we don't sell {item} here.")
+            orderlist.remove(item)
             print("Your order of " + ", ".join(orderlist) + " will be out shortly")
     return orderlist
     
@@ -76,13 +76,10 @@ def Bachelorette():
 
     order = takeorder(menu)
 
-
     bill = remaining(order, budget, menu)
-
-
     pay_bill(bill, budget)
-    
     second_date(date)
+    
 
 #Run the date simulator function
 Bachelorette()
