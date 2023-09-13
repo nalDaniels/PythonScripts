@@ -10,15 +10,18 @@
 
 
 #Create a function to take the order and create a list
-def takeorder():
+def takeorder(menu):
     order = input("What would you like to order? (Separate items with ', ') ")
     orderlist = order.split(", ")
     for item in orderlist:
         if item.title() == "Bottle Of Wine":
-            #create a global variable so it can be used/referenced in another function
+            #create a global variable to be used in another function
             global wine
             wine = input("White or Red? ")
-    print("Your order of " + ", ".join(orderlist) + " will be out shortly")
+        if item not in menu.keys():
+            print("Sorry, we don't sell that here.")
+        else: 
+            print("Your order of " + ", ".join(orderlist) + " will be out shortly")
     return orderlist
     
 #Create a function that shows the remaining budget after ordering food and drinks and returns the bill plus tip
@@ -71,10 +74,13 @@ def Bachelorette():
     "Bottle Of Wine": {"Red": 60, "White": 50}}
     print(menu)
 
-    order = takeorder()
+    order = takeorder(menu)
 
 
-    bill = remaining(order, budget, menu)
+    try:
+        bill = remaining(order, budget, menu)
+    except KeyError:
+        takeorder(menu)
 
     pay_bill(bill, budget)
     
