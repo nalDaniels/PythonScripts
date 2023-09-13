@@ -19,7 +19,7 @@ def takeorder(menu):
             global wine
             wine = input("White or Red? ")
         if item not in menu.keys():
-            print("Sorry, we don't sell that here.")
+            print("Sorry, we don't sell that here. Here's what we have: "
         else: 
             print("Your order of " + ", ".join(orderlist) + " will be out shortly")
     return orderlist
