@@ -12,9 +12,9 @@ print(procs)
 
 
 #determine how to iterate through dictionary items and access information
-for key, value in procs.items():
-    print(key) #Expecting PID
-    print(value['name']) #Expecting Process Name
+# for key, value in procs.items():
+#     print(key) #Expecting PID
+#     print(value['name']) #Expecting Process Name
 
 #iterate through items in procs and add the executable path if it exists. otherwise add Access Denied
 for key, value in procs.items():
