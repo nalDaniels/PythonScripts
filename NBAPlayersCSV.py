@@ -65,7 +65,7 @@ def Players_CSV():
         "Team Name": player_info["data"][i]["team"]["full_name"]})
     
     # Write to csv file
-    with open('NBAPlayers.csv', 'w', encoding='UTF8', newline='') as file:
+    with open('NBAPlayers.csv', 'w', newline='') as file:
         # Set fieldnames variable to fieldnames
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         # Writes fieldnames to header
