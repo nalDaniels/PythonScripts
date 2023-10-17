@@ -4,8 +4,8 @@ import psutil
 import os
 import csv
 
-# Create a dictinary of process names, PIDs, and username of who initiated the process
-procs = {p.pid: p.info for p in psutil.process_iter(['name', 'username'])}
+# Create a dictinary of process names, PIDs, executable path, cpu and memory percentage
+procs = {p.pid: p.info for p in psutil.process_iter(['name', 'exe', 'cpu_percent', 'memory_percent'])}
 
 # Print dictionary of processes
 print(procs)
@@ -15,6 +15,10 @@ print(procs)
 # for key, value in procs.items():
 #     print(key) #Expecting PID
 #     print(value['name']) #Expecting Process Name
+#     print(value['cpu_percent']) #Expecting CPU percentage
+#     print(value['memory_percent']) #Expecting Memory percentage
+
+
 
 # Iterate through items in procs and add the executable path if it exists; otherwise, add 'Not Found'
 for key, value in procs.items():
@@ -37,9 +41,8 @@ def Process_CSV():
         rows.append({"PID": key,
         "Process Name": value["name"],
         "Exec Path": value["Exec Path"],
-        # Use key to get cpu_percent and memory_percent
-        "CPU Usage": psutil.Process(key).cpu_percent(),
-        "Memory Usage": psutil.Process(key).memory_percent()
+        "CPU Usage": value["cpu_percent"],
+        "Memory Usage": value["memory_percent"]
     })
     # Write to csv file
     with open('Processes.csv', 'w', encoding='UTF8', newline='') as file:
