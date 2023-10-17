@@ -4,8 +4,8 @@ import psutil
 import os
 import csv
 
-# Create a dictinary of process names, PIDs, executable path, cpu and memory percentage
-procs = {p.pid: p.info for p in psutil.process_iter(['name', 'exe', 'cpu_percent', 'memory_percent'])}
+# Create a dictinary of process names, PIDs, cpu and memory percentage
+procs = {p.pid: p.info for p in psutil.process_iter(['name', 'cpu_percent', 'memory_percent'])}
 
 # Print dictionary of processes
 print(procs)
