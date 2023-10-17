@@ -4,52 +4,53 @@ import psutil
 import os
 import csv
 
-#create a dictinary of process names, PIDs, and username of who initiated the process
+# Create a dictinary of process names, PIDs, and username of who initiated the process
 procs = {p.pid: p.info for p in psutil.process_iter(['name', 'username'])}
 
-#print dictionary
+# Print dictionary of processes
 print(procs)
 
 
-#determine how to iterate through dictionary items and access information
+# Determine how to iterate through dictionary items and access information
 # for key, value in procs.items():
 #     print(key) #Expecting PID
 #     print(value['name']) #Expecting Process Name
 
-#iterate through items in procs and add the executable path if it exists. otherwise add 'Not Found'
+# Iterate through items in procs and add the executable path if it exists; otherwise, add 'Not Found'
 for key, value in procs.items():
     try:
         procs[key]["Exec Path"]=psutil.Process(key).exe()
     except (psutil.AccessDenied, psutil.PermissionError):
         procs[key]["Exec Path"]="Not Found"
 
-#print dictionary with new information
+# Print dictionary with new path information
 print(procs)
 
-#make a csv function
+# Make a csv function
 def Process_CSV():
-    #create column names
+    # Create column names
     fieldnames = ['PID', 'Process Name', 'Exec Path', 'CPU Usage', 'Memory Usage']
-    #create rows
+    # Create rows
     rows = []
-    #create a for loop to iterate through dictionary of processes and assign column to data 
+    # Create a for loop to iterate through dictionary of processes and assign column to data 
     for key, value in procs.items():
         rows.append({"PID": key,
         "Process Name": value["name"],
         "Exec Path": value["Exec Path"],
-        #use key to get cpu_percent and memory_percent
+        # Use key to get cpu_percent and memory_percent
         "CPU Usage": psutil.Process(key).cpu_percent(),
         "Memory Usage": psutil.Process(key).memory_percent()
     })
-
+    # Write to csv file
     with open('Processes.csv', 'w', encoding='UTF8', newline='') as file:
-    #sets field names to fieldnames variable
+    # Set field names to fieldnames variable
         writer = csv.DictWriter(file, fieldnames=fieldnames)
-    #writes fieldnames to header
+    # Writes fieldnames to header
         writer.writeheader()
+    # Write in row data
         writer.writerows(rows)
     
     print("CSV created")
   
-#call function to create csv
+# Call function to create csv
 Process_CSV()
