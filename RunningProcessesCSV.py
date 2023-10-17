@@ -16,7 +16,7 @@ print(procs)
 #     print(key) #Expecting PID
 #     print(value['name']) #Expecting Process Name
 
-#iterate through items in procs and add the executable path if it exists. otherwise add Access Denied
+#iterate through items in procs and add the executable path if it exists. otherwise add 'Not Found'
 for key, value in procs.items():
     try:
         procs[key]["Exec Path"]=psutil.Process(key).exe()
@@ -47,5 +47,5 @@ def Process_CSV():
         writer.writeheader()
         writer.writerows(rows)
   
-#call function to crete csv
+#call function to create csv
 Process_CSV()
