@@ -14,8 +14,8 @@ headers = {'X-RapidAPI-Key': 'Enter API Key'}
 
 response = requests.request("GET", url, headers=headers)
 
-# Print response status code
-print(response)
+# Get response code 
+print(response.status_code)
 
 # Print data
 print(response.text)
