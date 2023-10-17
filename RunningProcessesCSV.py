@@ -23,6 +23,7 @@ for key, value in procs.items():
     except (psutil.AccessDenied, psutil.PermissionError):
         procs[key]["Exec Path"]="Not Found"
 
+#print dictionary with new information
 print(procs)
 
 #make a csv function
@@ -36,6 +37,7 @@ def Process_CSV():
         rows.append({"PID": key,
         "Process Name": value["name"],
         "Exec Path": value["Exec Path"],
+        #use key to get cpu_percent and memory_percent
         "CPU Usage": psutil.Process(key).cpu_percent(),
         "Memory Usage": psutil.Process(key).memory_percent()
     })
@@ -46,6 +48,8 @@ def Process_CSV():
     #writes fieldnames to header
         writer.writeheader()
         writer.writerows(rows)
+    
+    print("CSV created")
   
 #call function to create csv
 Process_CSV()
