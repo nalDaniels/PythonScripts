@@ -45,7 +45,7 @@ def Process_CSV():
         "Memory Usage": value["memory_percent"]
     })
     # Write to csv file
-    with open('Processes.csv', 'w', encoding='UTF8', newline='') as file:
+    with open('Processes.csv', 'w', newline='') as file:
     # Set field names to fieldnames variable
         writer = csv.DictWriter(file, fieldnames=fieldnames)
     # Writes fieldnames to header
