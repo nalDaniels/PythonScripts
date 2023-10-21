@@ -24,7 +24,7 @@ for policy in policiesiter:
     policies.append(policy)
 
 # Determine the data type 
-print(type(policies[1]["Policies"]))
+print(type(policies[1]["Policies"])) # Expecting a list
 
 # Combine results from first and second pages to a new list
 policieslist = policies[0]["Policies"] + policies[1]["Policies"]
